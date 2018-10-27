@@ -13,7 +13,7 @@ ENV NODE_VERSION 10
 
 # execute all following dockerfile commands under
 # QEMU, so we can build this arm image under x86
-# RUN [ "cross-build-start" ]
+RUN [ "cross-build-start" ]
 
 # upgrade everything, install nodejs deps
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get dist-upgrade -y \
@@ -58,4 +58,4 @@ ENTRYPOINT [ "/sbot.sh" ]
 CMD [ "server" ]
 
 # and... we're done with QEMU
-# RUN [ "cross-build-end" ]
+RUN [ "cross-build-end" ]
