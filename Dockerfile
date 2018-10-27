@@ -2,7 +2,7 @@
 # Run a Scuttlebutt pub on a Raspberry Pi via Docker
 
 # debian w/ ARM qemu
-FROM resin/armv7hf-debian:stretch
+FROM arm32v7/debian:9
 
 # blame the human that created this
 LABEL maintainer="ericb@ericbarch.com"
@@ -10,10 +10,6 @@ LABEL maintainer="ericb@ericbarch.com"
 # define versions of what we'll install
 ENV NVM_VERSION 0.33.11
 ENV NODE_VERSION 10
-
-# execute all following dockerfile commands under
-# QEMU, so we can build this arm image under x86
-RUN [ "cross-build-start" ]
 
 # upgrade everything, install nodejs deps
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get dist-upgrade -y \
@@ -56,6 +52,3 @@ RUN mkdir ~/.ssb && chown -R sbot: ~/.ssb
 # launch sbot on container start and allow overriding of sbot command
 ENTRYPOINT [ "/sbot.sh" ]
 CMD [ "server" ]
-
-# and... we're done with QEMU
-RUN [ "cross-build-end" ]
