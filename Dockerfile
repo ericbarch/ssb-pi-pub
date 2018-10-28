@@ -9,7 +9,7 @@ LABEL maintainer="ericb@ericbarch.com"
 
 # define versions of what we'll install
 ENV NVM_VERSION 0.33.11
-ENV NODE_VERSION 10
+ENV NODE_VERSION 8
 
 # upgrade everything, install nodejs deps
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get dist-upgrade -y \
