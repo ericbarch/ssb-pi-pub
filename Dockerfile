@@ -1,7 +1,7 @@
 # ssb-pi-pub
 # Run a Scuttlebutt pub on a Raspberry Pi via Docker
 
-# debian w/ ARM qemu
+# debian for ARM
 FROM arm32v7/debian:9
 
 # blame the human that created this
@@ -9,7 +9,7 @@ LABEL maintainer="ericb@ericbarch.com"
 
 # define versions of what we'll install
 ENV NVM_VERSION 0.33.11
-ENV NODE_VERSION 8
+ENV NODE_VERSION 10
 
 # upgrade everything, install nodejs deps
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get dist-upgrade -y \
